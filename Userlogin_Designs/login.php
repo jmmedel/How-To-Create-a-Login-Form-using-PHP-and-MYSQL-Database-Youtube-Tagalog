@@ -66,15 +66,18 @@ $(function(){
 			 var password = $('#password').val();
 		 }
          e.preventDefault();
-        $.ajax({
+		
+			$.ajax({
 			type: 'Post',
 			url:'ajaxlogin.php',
 			data: {username:username,password:password},
 			success: function(data){
 				
 				if($.trim(data) === "202"){
-					
+					alert("Sucesss");
 					setTimeout(' window.location.href =  "index.php"', 1000);
+				}else{
+					alert(data);
 				}
 			},
             error: function(data){
@@ -82,6 +85,8 @@ $(function(){
 			}
 
 		});
+		
+        
 
 	});
 });

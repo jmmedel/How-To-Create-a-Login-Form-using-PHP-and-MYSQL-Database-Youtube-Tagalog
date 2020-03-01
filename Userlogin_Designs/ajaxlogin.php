@@ -2,7 +2,11 @@
 
 session_start();
 require_once('config.php');
-
+if(!isset($_SERVER['HTTP_REFERER'])){
+    // redirect them to your desired location
+    header('Location: login.php');
+    exit;
+}
 $username = $_POST['username'];
 $password = $_POST['password'];
 
@@ -16,7 +20,7 @@ if($result){
 
         $validpassword = password_verify($password,$user['password']);
         if($validpassword){
-                $_SESSION['userslogin'] = $user;
+                $_SESSION['userlogin'] = $user;
                 echo('202');
 
         }else{
